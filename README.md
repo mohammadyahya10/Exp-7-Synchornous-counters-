@@ -47,22 +47,34 @@ This type of counter is normally referred to as a Down Counter, (CTD). In a bina
 4-bit Count Down Counter
 ### Procedure
 /* write all the steps invloved */
-
-
-
-### PROGRAM 
-/*
+```
 Program for flipflops  and verify its truth table in quartus using Verilog programming.
 Developed by: 
 RegisterNumber:  
-*/
+```
 
+### PROGRAM UP
+```
+module upcounter(clk,a);
+input clk;
+output reg[3:0]a;
+always@(posedge clk)
+begin
+a[3]=(a[2] & a[1] & a[0]) ^ a[3];
+a[2]=(a[1] & a[0]) ^ a[2];
+a[1]=(a[0] ^ a[1]);
+a[0]=1 ^ a[0];
+end
+endmodule 
+
+```
 
 
 
 
 
 ### RTL LOGIC UP COUNTER AND DOWN COUNTER  
+![uprtl](https://github.com/mohammadyahya10/Exp-7-Synchornous-counters-/assets/130548526/5c095460-c349-4869-bfed-55061a43b8b5)
 
 
 
@@ -75,7 +87,34 @@ RegisterNumber:
 ### TIMING DIGRAMS FOR COUNTER  
 
 
+![uptd](https://github.com/mohammadyahya10/Exp-7-Synchornous-counters-/assets/130548526/65c59da9-d5a1-432e-a020-aefebb040736)
 
+
+
+### PROGRAM DC
+```
+module downcounter(clk,a);
+input clk;
+output reg[3:0]a;
+always@(posedge clk)
+begin
+a[3]=(~a[2] & ~a[1] & ~a[0])^ a[3];
+a[2]=(~a[1] & ~a[0]) ^ a[2];
+a[1]=(~a[0] ^ a[1]);
+a[0]=1 ^ a[0];
+end
+endmodule
+
+```
+
+
+### RTL LOGIC UP COUNTER AND DOWN COUNTER  
+
+![WhatsApp Image 2023-06-07 at 13 19 05](https://github.com/mohammadyahya10/Exp-7-Synchornous-counters-/assets/130548526/b624b508-804c-49c7-b660-37d45e4894f3)
+
+
+### TIMING DIGRAMS FOR COUNTER  
+![dctd](https://github.com/mohammadyahya10/Exp-7-Synchornous-counters-/assets/130548526/63b97fd0-fcf9-4221-a56c-90bad37fdd57)
 
 
 ### TRUTH TABLE 
@@ -86,3 +125,4 @@ RegisterNumber:
 
 
 ### RESULTS 
+The upcounters and the downcounters are submitted
